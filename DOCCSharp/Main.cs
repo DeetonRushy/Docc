@@ -8,6 +8,8 @@ ClientConnection connection = new ClientConnection(new Docc.Common.SharedClient(
     Id = Guid.NewGuid()
 });
 
+// will basically request the "/api/v2/raw-version" endpoint every time you click
+// connection.MakeRequest() could be used for any registered endpoint on the server
 while (true)
 {
     var vrq = new RequestBuilder()
