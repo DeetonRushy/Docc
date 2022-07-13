@@ -94,10 +94,8 @@ internal class ServerConnection
                 {
                     // we failed to deserialize the first packet. Just reject the
                     // connection.
-
-                    // Why not handle this? Well, if the first packet is 
-                    // malformed our trust for this client non-existant
-                    // So we just drop them and waste no time.
+                    
+                    // sending random stuff instantly grants you a fuck off
                     _logger.Log("failed to deserialize request contents.");
 
                     var rb = new RequestBuilder()
