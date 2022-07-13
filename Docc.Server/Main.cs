@@ -1,4 +1,4 @@
-﻿using static Docc.Common.StaticHelpers;
+using static Docc.Common.StaticHelpers;
 using Docc.Common;
 using Docc.Server;
 using System.Text;
@@ -88,6 +88,21 @@ manager.MapGet("/api/v2/user/id", (args, _) =>
         .WithResult(Okay());
 
     return rb.Build();
+});
+
+// MapGet & MapSet do the same thing...
+// The 'Location' is basically the name of your endpoint
+// and the lambda is what dispatches the response.
+
+manager.MapGet("/endpoint/mine", (args, sender) =>
+{
+    // return a request, the client will receive this.
+    return new RequestBuilder()
+        .WithLocation(Request.DefaultLocation)
+        .WithAgent("My-Application")
+        .WithResult(Okay())
+        .AddContent("Here is the data from my endpoint!")
+        .Build();
 });
 
 connection.OnMessage = (req, client) =>
